@@ -5,7 +5,7 @@ import {
 } from 'react-native'
 
 import Feather from 'react-native-vector-icons/Feather'
-export default function TextInputLogin({...props}){
+export default function TextInputC({keyboardType,...props}){
     return (
         <View
             style={{
@@ -18,16 +18,6 @@ export default function TextInputLogin({...props}){
                 paddingHorizontal: 10,
             }}
         >
-            <View
-                style={{
-                    height: 50,
-                    width: 50,
-                    alignItems: 'center',
-                    justifyContent: 'center'
-                }}
-            >
-                <Feather name={props.secureTextEntry ? 'lock' : 'user'} size={20} color={'#2c5282'}/>
-            </View>
             <TextInput 
                 style={{
                     flex: 1,
@@ -35,6 +25,8 @@ export default function TextInputLogin({...props}){
                     fontSize: 14,
                     color: '#2c5282',
                 }}
+                multiline={props.multiline}
+                keyboardType={keyboardType ? keyboardType : 'default'}
                 secureTextEntry={props.secureTextEntry}
                 selectionColor={'#2c5282'}
                 placeholder={props.placeholder}

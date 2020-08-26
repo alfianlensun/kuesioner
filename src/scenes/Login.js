@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { StatusBar, View, Text, Image,TouchableOpacity, ActivityIndicator, ScrollView } from 'react-native'
 import TextInputLogin from '../components/textinput/TextInputLogin'
-
+import AsyncStorage from '@react-native-community/async-storage';
+import { loginService } from '../services/Service';
 
 export default class Login extends Component{
     constructor(props){
@@ -9,23 +10,53 @@ export default class Login extends Component{
         this.state = {
             username: '',
             password: '',
+            error: '',
             loader: false
         }
     }
+
+    // fungsi yang di load saat aplikasi di buka
+    async componentDidMount(){
+        try {
+            // get user login
+            const user = await AsyncStorage.getItem('AuthUser')
+            
+            // cek user login  atau tidak
+            if (user !== null){
+                this.props.navigation.replace("MainMenu")
+            }
+            
+        } catch(err){
+            
+        }
+    }
     
-    login = () => {
+    submitLogin = async () => {
         try {
             this.setState({
                 loader: true
             })      
-            setTimeout(() => {
+            const {success, message, data} = await loginService({
+                username: this.state.username,
+                password: this.state.password,
+            })
+            if (success){
+                await AsyncStorage.setItem('AuthUser', JSON.stringify(data))
                 this.setState({
                     loader: false
-                })      
-                this.props.navigation.push('MainMenu')
-            }, 500);
+                }, () => {
+                    this.props.navigation.replace('MainMenu')
+                })
+            } else {
+                throw new Error(message)
+            }
+
+            
         } catch(err){
-            console.log(err)
+            this.setState({
+                error: err.message,
+                loader: false
+            })
         }
     }
     render(){
@@ -33,7 +64,7 @@ export default class Login extends Component{
             <View
                 style={{
                     flex: 1,
-                    backgroundColor: '#63b3ed',
+                    backgroundColor: '#320b86',
                     paddingTop: 100,
                 }}
             >
@@ -41,22 +72,29 @@ export default class Login extends Component{
                 <StatusBar translucent backgroundColor="transparent" barStyle="light-content"/>
                 <ScrollView
                     style={{
-                        flex: 1
+                        flex: 1,
                     }}
                 >
                     <View
                         style={{
-                            width: 150,
-                            height: 150
+                            width: '100%',
+                            alignItems: 'center'
                         }}
                     >
-                        <Image 
+                        <View
                             style={{
-                                width: '100%',
-                                height: '100%'
+                                width: 150,
+                                height: 150
                             }}
-                            source={require('../../assets/background/loginimage.png')}
-                        />
+                        >
+                            <Image 
+                                style={{
+                                    width: '100%',
+                                    height: '100%'
+                                }}
+                                source={require('../../assets/background/loginimage.png')}
+                            />
+                        </View>
                     </View>
                     <View
                         style={{
@@ -102,6 +140,19 @@ export default class Login extends Component{
                             paddingHorizontal: 10
                         }}
                     >
+                        {this.state.error.length > 0 &&
+                            <Text
+                                style={{
+                                    fontFamily: 'NeoSans',
+                                    fontSize: 14,
+                                    paddingHorizontal: 10,
+                                    lineHeight: 20,
+                                    color: '#fff'
+                                }}
+                            >
+                                {this.state.error}
+                            </Text>
+                        }
                         <TextInputLogin
                             value={this.state.username}
                             placeholder={'Masukan NIP / NIM'}
@@ -114,7 +165,7 @@ export default class Login extends Component{
                         <TextInputLogin
                             secureTextEntry={true}
                             value={this.state.password}
-                            securet
+                            secureTextEntry
                             placeholder={'Masukan Password'}
                             onChange={(text) => {
                                 this.setState({
@@ -134,12 +185,12 @@ export default class Login extends Component{
                                     flex: 1,
                                     marginRight: 10,
                                     borderRadius: 30,
-                                    backgroundColor: "#3182ce",
+                                    backgroundColor: "#9a67ea",
                                     flexDirection: 'row',
                                     alignItems: 'center',
                                     justifyContent: 'center'
                                 }}
-                                onPress={this.login}
+                                onPress={this.submitLogin}
                             >
                                 {this.state.loader ? 
                                     <ActivityIndicator size={25} color="#fff"/>
@@ -154,26 +205,6 @@ export default class Login extends Component{
                                         Masuk
                                     </Text>   
                                 }
-                            </TouchableOpacity>
-                            <TouchableOpacity
-                                style={{
-                                    flex: 1,
-                                    borderRadius: 30,
-                                    flexDirection: 'row',
-                                    alignItems: 'center',
-                                    justifyContent: 'center'
-                                }}
-                                onPress={this.login}
-                            >
-                                <Text
-                                    style={{
-                                        fontFamily: 'NeoSansBold',
-                                        fontSize: 16,
-                                        color: '#fff'
-                                    }}
-                                >
-                                    Mendaftar
-                                </Text>   
                             </TouchableOpacity>
                         </View>
                     </View>

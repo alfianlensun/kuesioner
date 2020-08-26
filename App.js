@@ -3,6 +3,17 @@ import {createStackNavigator, CardStyleInterpolators, TransitionPresets} from '@
 import Login from './src/scenes/Login';
 import { NavigationContainer } from '@react-navigation/native';
 import MainMenu from './src/scenes/MainMenu';
+import ListUser from './src/scenes/ListUser';
+import ListKusioner from './src/scenes/ListKuesioner';
+import TambahKuesioner from './src/scenes/TambahKuesioner';
+import TambahDetailKuesioner from './src/scenes/TambahDetailKuesioner';
+import TambahUserDosen from './src/scenes/TambahUserDosen';
+import TambahUserMahasiswa from './src/scenes/TambahUserMahasiswa';
+import PerbaruiUserDosen from './src/scenes/PerbaruiUserDosen';
+import PerbaruiUserMahasiswa from './src/scenes/PerbaruiUserMahasiswa';
+import ListKuesionerDetail from './src/scenes/ListKuesionerDetail';
+import PilihKuesioner from './src/scenes/PilihKuesioner';
+import IsiKuesioner from './src/scenes/IsiKuesioner';
 
 const config = {
 	animation: 'spring',
@@ -23,6 +34,8 @@ export default class App extends Component{
 			initialRoute: 'Login'
 		}
 	}
+
+
   	render(){
 		  return (
 			<NavigationContainer
@@ -43,6 +56,17 @@ export default class App extends Component{
 				>
 					<Stack.Screen name="Login" component={Login}/>
 					<Stack.Screen name="MainMenu" component={MainMenu}/>
+					<Stack.Screen name="ListUser" component={ListUser}/>
+					<Stack.Screen name="ListKuesioner" component={ListKusioner}/>
+					<Stack.Screen name="ListKuesionerDetail" component={ListKuesionerDetail}/>
+					<Stack.Screen name="TambahKuesioner" component={TambahKuesioner}/>
+					<Stack.Screen name="TambahDetailKuesioner" component={TambahDetailKuesioner}/>
+					<Stack.Screen name="TambahUserDosen" component={TambahUserDosen}/>
+					<Stack.Screen name="TambahUserMahasiswa" component={TambahUserMahasiswa}/>
+					<Stack.Screen name="PerbaruiUserDosen" component={PerbaruiUserDosen}/>
+					<Stack.Screen name="PerbaruiUserMahasiswa" component={PerbaruiUserMahasiswa}/>
+					<Stack.Screen name="PilihKuesioner" component={PilihKuesioner}/>
+					<Stack.Screen name="IsiKuesioner" component={IsiKuesioner}/>
 				</Stack.Navigator>
 			</NavigationContainer>
 		  )
