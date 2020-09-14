@@ -40,6 +40,7 @@ export default class Login extends Component{
                 username: this.state.username,
                 password: this.state.password,
             })
+
             if (success){
                 await AsyncStorage.setItem('AuthUser', JSON.stringify(data))
                 this.setState({
@@ -64,12 +65,12 @@ export default class Login extends Component{
             <View
                 style={{
                     flex: 1,
-                    backgroundColor: '#320b86',
+                    backgroundColor: '#fff',
                     paddingTop: 100,
                 }}
             >
 
-                <StatusBar translucent backgroundColor="transparent" barStyle="light-content"/>
+                <StatusBar translucent backgroundColor="transparent" barStyle="dark-content"/>
                 <ScrollView
                     style={{
                         flex: 1,
@@ -106,7 +107,7 @@ export default class Login extends Component{
                             style={{
                                 fontFamily: 'NeoSansBold',
                                 fontSize: 20,
-                                color: '#fff'
+                                color: '#000'
                             }}
                         >
                             Selamat Datang,
@@ -115,8 +116,8 @@ export default class Login extends Component{
                             style={{
                                 marginTop: 5,
                                 fontFamily: 'NeoSansBold',
-                                fontSize: 20,
-                                color: '#fff'
+                                fontSize: 18,
+                                color: '#000'
                             }}
                         >
                              Di Aplikasi Kuesioner!
@@ -127,7 +128,7 @@ export default class Login extends Component{
                                 fontFamily: 'NeoSans',
                                 fontSize: 14,
                                 lineHeight: 20,
-                                color: '#fff'
+                                color: '#000'
                             }}
                         >
                             Silahkan login untuk mulai mengisi kuesioner atau melihat hasil kuesioner
@@ -143,11 +144,11 @@ export default class Login extends Component{
                         {this.state.error.length > 0 &&
                             <Text
                                 style={{
-                                    fontFamily: 'NeoSans',
+                                    fontFamily: 'NeoSansBold',
                                     fontSize: 14,
                                     paddingHorizontal: 10,
                                     lineHeight: 20,
-                                    color: '#fff'
+                                    color: '#444'
                                 }}
                             >
                                 {this.state.error}

@@ -14,6 +14,13 @@ import PerbaruiUserMahasiswa from './src/scenes/PerbaruiUserMahasiswa';
 import ListKuesionerDetail from './src/scenes/ListKuesionerDetail';
 import PilihKuesioner from './src/scenes/PilihKuesioner';
 import IsiKuesioner from './src/scenes/IsiKuesioner';
+import Dashboard from './src/scenes/Dashboard';
+import HasilKuesioner from './src/scenes/HasilKuesioner';
+import PilihDashboard from './src/scenes/PilihDashboard';
+import ListSemester from './src/scenes/ListSemester';
+import ListMataKuliah from './src/scenes/ListMataKuliah';
+import TambahSemester from './src/scenes/TambahSemester';
+import TambahMataKuliah from './src/scenes/TambahMataKuliah';
 
 const config = {
 	animation: 'spring',
@@ -67,6 +74,13 @@ export default class App extends Component{
 					<Stack.Screen name="PerbaruiUserMahasiswa" component={PerbaruiUserMahasiswa}/>
 					<Stack.Screen name="PilihKuesioner" component={PilihKuesioner}/>
 					<Stack.Screen name="IsiKuesioner" component={IsiKuesioner}/>
+					<Stack.Screen name="Dashboard" component={Dashboard}/>
+					<Stack.Screen name="HasilKuesioner" component={HasilKuesioner}/>
+					<Stack.Screen name="PilihDashboard" component={PilihDashboard}/>
+					<Stack.Screen name="ListSemester" component={ListSemester}/>
+					<Stack.Screen name="ListMataKuliah" component={ListMataKuliah}/>
+					<Stack.Screen name="TambahSemester" component={TambahSemester}/>
+					<Stack.Screen name="TambahMataKuliah" component={TambahMataKuliah}/>
 				</Stack.Navigator>
 			</NavigationContainer>
 		  )

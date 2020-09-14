@@ -7,35 +7,36 @@ import Foundation from 'react-native-vector-icons/Foundation'
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import CardMenu from '../components/cards/CardMenu'
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import { getKuesioner, deleteKuesioner } from '../services/Service'
+import {deleteSemester, getSemester } from '../services/Service'
 
-export default class ListKusioner extends Component{
+export default class ListSemester extends Component{
     constructor(props){
         super(props)
         this.state = {
             loader: false,
-            selectedKuesioner: null,
+            selectedSemester: null,
             modal: false,
-            listKuesioner: []
+            listSemester: []
         }
     }
 
     componentDidMount(){
         this.focus = this.props.navigation.addListener('focus', () => {
-            this.getListKuesioner()
+            this.getListSemester()
         })
-        this.getListKuesioner()
+        this.getListSemester()
     }
 
     componentWillUnmount(){
         this.focus()
     }
 
-    getListKuesioner = async () => {
+    getListSemester = async () => {
         try{
-            const {data} = await getKuesioner();
+            const {data} = await getSemester();
+            console.log(data)
             this.setState({
-                listKuesioner: data
+                listSemester: data
             })
         } catch(err){
             console.log('err', err)
@@ -44,10 +45,10 @@ export default class ListKusioner extends Component{
 
     delete = async () => {
         try {
-            const {success} = await deleteKuesioner({
-                idMstKuesioner: this.state.selectedKuesioner.id_mst_kuesioner,
+            const {success} = await deleteSemester({
+                idMstSemester: this.state.selectedSemester.id_mst_semester,
             })
-            this.getListKuesioner()
+            this.getListSemester()
             this.setState({
                 modal: false
             })
@@ -95,7 +96,7 @@ export default class ListKusioner extends Component{
                             color: '#000'
                         }}
                     >
-                        Daftar Kuesioner
+                        Daftar Semester
                     </Text>
                 </View>
                 <View
@@ -109,8 +110,8 @@ export default class ListKusioner extends Component{
                         style={{
                             flex: 1
                         }}
-                        keyExtractor={(item) => item.id_mst_kuesioner.toString()}
-                        data={this.state.listKuesioner}
+                        keyExtractor={(item) => item.id_mst_semester.toString()}
+                        data={this.state.listSemester}
                         ListEmptyComponent={() => (
                             <View
                                 style={{
@@ -125,7 +126,7 @@ export default class ListKusioner extends Component{
                                         lineHeight: 20,
                                         color: '#000'
                                     }}
-                                >Belum ada kuesioner</Text>  
+                                >Belum ada semester</Text>  
                             </View>
                         )}
                         renderItem={({item}) => (
@@ -159,23 +160,7 @@ export default class ListKusioner extends Component{
                                             lineHeight: 20,
                                             color: '#fff'
                                         }}
-                                    >{item.nama_kuesioner}</Text>  
-                                </TouchableOpacity>
-                                <TouchableOpacity
-                                    style={{
-                                        height: 40,
-                                        width: 40,
-                                        marginRight: 10,
-                                        justifyContent: 'center',
-                                        alignItems: 'center',
-                                        borderRadius: 20,
-                                        backgroundColor: '#fff'
-                                    }}
-                                    onPress={() => {this.props.navigation.push('TambahKuesioner', {
-                                        ...item
-                                    })}}
-                                >
-                                    <Ionicons name="md-open-outline" size={20} color={'#000'}/>
+                                    >{item.nama_semester}</Text>  
                                 </TouchableOpacity>
                                 <TouchableOpacity
                                     style={{
@@ -188,7 +173,7 @@ export default class ListKusioner extends Component{
                                     }}
                                     onPress={() => {
                                         this.setState({
-                                            selectedKuesioner: item,
+                                            selectedSemester: item,
                                             modal: true
                                         })
                                     }}
@@ -200,7 +185,7 @@ export default class ListKusioner extends Component{
                     />
                 </View>
                 <TouchableOpacity
-                    onPress={() => this.props.navigation.push('TambahKuesioner')}
+                    onPress={() => this.props.navigation.push('TambahSemester')}
                     style={{
                         position: 'absolute',
                         bottom: 10,
@@ -254,7 +239,7 @@ export default class ListKusioner extends Component{
                                 fontSize: 14,
                                 color: '#000'
                             }}
-                        >Apakah anda yakin ingin menghapus {this.state.selectedKuesioner !== null && this.state.selectedKuesioner.nama_kuesioner} ? </Text>  
+                        >Apakah anda yakin ingin menghapus {this.state.selectedSemester !== null && this.state.selectedSemester.nama_semester} ? </Text>  
                         <View
                             style={{
                                 marginTop: 20,

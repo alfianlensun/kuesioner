@@ -7,35 +7,35 @@ import Foundation from 'react-native-vector-icons/Foundation'
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import CardMenu from '../components/cards/CardMenu'
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import { getKuesioner, deleteKuesioner } from '../services/Service'
+import {deleteMataKuliah, getMataKuliah } from '../services/Service'
 
-export default class ListKusioner extends Component{
+export default class ListMataKuliah extends Component{
     constructor(props){
         super(props)
         this.state = {
             loader: false,
-            selectedKuesioner: null,
+            selectedMataKuliah: null,
             modal: false,
-            listKuesioner: []
+            listMataKuliah: []
         }
     }
 
     componentDidMount(){
         this.focus = this.props.navigation.addListener('focus', () => {
-            this.getListKuesioner()
+            this.getListMataKuliah()
         })
-        this.getListKuesioner()
+        this.getListMataKuliah()
     }
 
     componentWillUnmount(){
         this.focus()
     }
 
-    getListKuesioner = async () => {
+    getListMataKuliah = async () => {
         try{
-            const {data} = await getKuesioner();
+            const {data} = await getMataKuliah();
             this.setState({
-                listKuesioner: data
+                listMataKuliah: data
             })
         } catch(err){
             console.log('err', err)
@@ -44,10 +44,10 @@ export default class ListKusioner extends Component{
 
     delete = async () => {
         try {
-            const {success} = await deleteKuesioner({
-                idMstKuesioner: this.state.selectedKuesioner.id_mst_kuesioner,
+            const {success} = await deleteMataKuliah({
+                idMstMataKuliah: this.state.selectedMataKuliah.id_mst_mata_kuliah,
             })
-            this.getListKuesioner()
+            this.getListMataKuliah()
             this.setState({
                 modal: false
             })
@@ -95,7 +95,7 @@ export default class ListKusioner extends Component{
                             color: '#000'
                         }}
                     >
-                        Daftar Kuesioner
+                        Daftar Mata Kuliah
                     </Text>
                 </View>
                 <View
@@ -109,8 +109,8 @@ export default class ListKusioner extends Component{
                         style={{
                             flex: 1
                         }}
-                        keyExtractor={(item) => item.id_mst_kuesioner.toString()}
-                        data={this.state.listKuesioner}
+                        keyExtractor={(item) => item.id_mst_mata_kuliah.toString()}
+                        data={this.state.listMataKuliah}
                         ListEmptyComponent={() => (
                             <View
                                 style={{
@@ -125,7 +125,7 @@ export default class ListKusioner extends Component{
                                         lineHeight: 20,
                                         color: '#000'
                                     }}
-                                >Belum ada kuesioner</Text>  
+                                >Belum ada mata kuliah</Text>  
                             </View>
                         )}
                         renderItem={({item}) => (
@@ -159,23 +159,15 @@ export default class ListKusioner extends Component{
                                             lineHeight: 20,
                                             color: '#fff'
                                         }}
-                                    >{item.nama_kuesioner}</Text>  
-                                </TouchableOpacity>
-                                <TouchableOpacity
-                                    style={{
-                                        height: 40,
-                                        width: 40,
-                                        marginRight: 10,
-                                        justifyContent: 'center',
-                                        alignItems: 'center',
-                                        borderRadius: 20,
-                                        backgroundColor: '#fff'
-                                    }}
-                                    onPress={() => {this.props.navigation.push('TambahKuesioner', {
-                                        ...item
-                                    })}}
-                                >
-                                    <Ionicons name="md-open-outline" size={20} color={'#000'}/>
+                                    >{item.nama_mata_kuliah}</Text>  
+                                    <Text
+                                        style={{
+                                            fontFamily: 'NeoSans',
+                                            fontSize: 12,
+                                            lineHeight: 20,
+                                            color: '#fff'
+                                        }}
+                                    >{item.nama_semester}</Text>  
                                 </TouchableOpacity>
                                 <TouchableOpacity
                                     style={{
@@ -188,7 +180,7 @@ export default class ListKusioner extends Component{
                                     }}
                                     onPress={() => {
                                         this.setState({
-                                            selectedKuesioner: item,
+                                            selectedMataKuliah: item,
                                             modal: true
                                         })
                                     }}
@@ -200,7 +192,7 @@ export default class ListKusioner extends Component{
                     />
                 </View>
                 <TouchableOpacity
-                    onPress={() => this.props.navigation.push('TambahKuesioner')}
+                    onPress={() => this.props.navigation.push('TambahMataKuliah')}
                     style={{
                         position: 'absolute',
                         bottom: 10,
@@ -254,7 +246,7 @@ export default class ListKusioner extends Component{
                                 fontSize: 14,
                                 color: '#000'
                             }}
-                        >Apakah anda yakin ingin menghapus {this.state.selectedKuesioner !== null && this.state.selectedKuesioner.nama_kuesioner} ? </Text>  
+                        >Apakah anda yakin ingin menghapus {this.state.selectedMataKuliah !== null && this.state.selectedMataKuliah.nama_mata_kuliah} ? </Text>  
                         <View
                             style={{
                                 marginTop: 20,

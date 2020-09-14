@@ -25,6 +25,7 @@ export default class ListKuesionerDetail extends Component{
         this.focus = this.props.navigation.addListener('focus', () => {
             this.getListKuesioner()    
         })
+        this.getListKuesioner()    
     }
 
     componentWillUnmount(){
@@ -61,11 +62,11 @@ export default class ListKuesionerDetail extends Component{
             <View
                 style={{
                     flex: 1,
-                    backgroundColor: '#320b86',
+                    backgroundColor: '#fff',
                     paddingTop: screenHeightPercent(4)+20,
                 }}
             >
-                <StatusBar translucent backgroundColor="transparent" barStyle="light-content"/>
+                <StatusBar translucent backgroundColor="transparent" barStyle="dark-content"/>
                 <View
                     style={{
                         width: '100%',
@@ -85,7 +86,7 @@ export default class ListKuesionerDetail extends Component{
                             justifyContent: 'center'
                         }}
                     >
-                        <Ionicons name="arrow-back" size={20} color={'#000'}/>
+                        <Ionicons name="chevron-back" size={25} color={'#000'}/>
                     </TouchableOpacity>
                     <View
                         style={{
@@ -96,7 +97,7 @@ export default class ListKuesionerDetail extends Component{
                             style={{
                                 fontFamily: 'NeoSansBold',
                                 fontSize: 16,
-                                color: '#fff'
+                                color: '#000'
                             }}
                         >
                             Detail Kuesioner
@@ -106,7 +107,7 @@ export default class ListKuesionerDetail extends Component{
                                 marginTop: 5,
                                 fontFamily: 'NeoSans',
                                 fontSize: 12,
-                                color: '#fff'
+                                color: '#000'
                             }}
                         >
                             {this.props.route.params.nama_kuesioner}
@@ -138,7 +139,7 @@ export default class ListKuesionerDetail extends Component{
                                         fontFamily: 'NeoSansBold',
                                         fontSize: 14,
                                         lineHeight: 20,
-                                        color: '#fff'
+                                        color: '#000'
                                     }}
                                 >Belum ada pertanyaan di kuesioner ini</Text>  
                             </View>
@@ -153,7 +154,7 @@ export default class ListKuesionerDetail extends Component{
                                     alignItems: 'center',
                                     paddingVertical: 10,
                                     flexDirection: 'row',
-                                    backgroundColor: '#fff'
+                                    backgroundColor: '#3f50b5'
                                 }}
                             >
                                 <View
@@ -167,7 +168,7 @@ export default class ListKuesionerDetail extends Component{
                                             fontFamily: 'NeoSansBold',
                                             fontSize: 14,
                                             lineHeight: 20,
-                                            color: '#000'
+                                            color: '#fff'
                                         }}
                                     >{item.pertanyaan}</Text>  
                                 </View>
@@ -179,13 +180,13 @@ export default class ListKuesionerDetail extends Component{
                                         justifyContent: 'center',
                                         alignItems: 'center',
                                         borderRadius: 20,
-                                        backgroundColor: '#883997'
+                                        backgroundColor: '#fff'
                                     }}
                                     onPress={() => {this.props.navigation.push('TambahDetailKuesioner', {
                                         ...item
                                     })}}
                                 >
-                                    <Ionicons name="md-open-outline" size={20} color={'#fff'}/>
+                                    <Ionicons name="md-open-outline" size={20} color={'#000'}/>
                                 </TouchableOpacity>
                                 <TouchableOpacity
                                     style={{
@@ -194,7 +195,7 @@ export default class ListKuesionerDetail extends Component{
                                         justifyContent: 'center',
                                         alignItems: 'center',
                                         borderRadius: 20,
-                                        backgroundColor: '#af4448'
+                                        backgroundColor: '#fff'
                                     }}
                                     onPress={() => {
                                         this.setState({
@@ -203,7 +204,7 @@ export default class ListKuesionerDetail extends Component{
                                         })
                                     }}
                                 >
-                                    <Ionicons name="trash" size={20} color={'#fff'}/>
+                                    <Ionicons name="trash" size={20} color={'#af4448'}/>
                                 </TouchableOpacity>
                             </View>
                         )}
@@ -222,7 +223,7 @@ export default class ListKuesionerDetail extends Component{
                         alignItems: 'center',
                         justifyContent: 'center',
                         borderRadius: 30,
-                        backgroundColor: '#b085f5'
+                        backgroundColor: '#3f50b5'
                     }}
                 >
                     <Ionicons name="add" size={40} color={'#fff'}/>

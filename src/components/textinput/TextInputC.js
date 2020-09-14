@@ -13,7 +13,7 @@ export default function TextInputC({keyboardType,...props}){
                 height: 50,
                 borderRadius: 30,
                 flexDirection: 'row',
-                backgroundColor: "#fff",
+                backgroundColor: "#eee",
                 marginTop: 20,
                 paddingHorizontal: 10,
             }}

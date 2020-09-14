@@ -48,7 +48,6 @@ export default class TabListDosen extends Component{
             <View
                 style={{
                     flex: 1,
-                    paddingHorizontal: 10,
                     paddingTop: 10,
                 }}
             >
@@ -68,7 +67,7 @@ export default class TabListDosen extends Component{
                                 alignItems: 'center',
                                 paddingVertical: 10,
                                 flexDirection: 'row',
-                                backgroundColor: '#fff'
+                                backgroundColor: '#3f50b5'
                             }}
                         >
                             <View
@@ -80,7 +79,7 @@ export default class TabListDosen extends Component{
                                     style={{
                                         fontFamily: 'NeoSansBold',
                                         fontSize: 16,
-                                        color: '#000'
+                                        color: '#fff'
                                     }}
                                 >{item.nama_dosen}</Text>  
                                 <Text
@@ -88,7 +87,7 @@ export default class TabListDosen extends Component{
                                         marginTop: 5,
                                         fontFamily: 'NeoSans',
                                         fontSize: 11,
-                                        color: '#000'
+                                        color: '#fff'
                                     }}
                                 >NIP : {item.nip}</Text>  
                             </View>
@@ -100,13 +99,13 @@ export default class TabListDosen extends Component{
                                     justifyContent: 'center',
                                     alignItems: 'center',
                                     borderRadius: 20,
-                                    backgroundColor: '#883997'
+                                    backgroundColor: '#fff'
                                 }}
                                 onPress={() => {this.props.navigation.push('PerbaruiUserDosen', {
                                     ...item
                                 })}}
                             >
-                                <Ionicons name="md-open-outline" size={20} color={'#fff'}/>
+                                <Ionicons name="md-open-outline" size={20} color={'#000'}/>
                             </TouchableOpacity>
                             <TouchableOpacity
                                 style={{
@@ -115,7 +114,7 @@ export default class TabListDosen extends Component{
                                     justifyContent: 'center',
                                     alignItems: 'center',
                                     borderRadius: 20,
-                                    backgroundColor: '#af4448'
+                                    backgroundColor: '#fff'
                                 }}
                                 onPress={() => {
                                     this.setState({
@@ -124,7 +123,7 @@ export default class TabListDosen extends Component{
                                     })
                                 }}
                             >
-                                <Ionicons name="trash" size={20} color={'#fff'}/>
+                                <Ionicons name="trash" size={20} color={'#af4448'}/>
                             </TouchableOpacity>
                         </View>
                     )}
@@ -140,7 +139,7 @@ export default class TabListDosen extends Component{
                         alignItems: 'center',
                         justifyContent: 'center',
                         borderRadius: 30,
-                        backgroundColor: '#b085f5'
+                        backgroundColor: '#3f50b5'
                     }}
                 >
                     <Ionicons name="add" size={40} color={'#fff'}/>

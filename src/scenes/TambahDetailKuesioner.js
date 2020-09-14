@@ -89,11 +89,11 @@ export default class TambahDetailKuesioner extends Component{
             <View
                 style={{
                     flex: 1,
-                    backgroundColor: '#320b86',
+                    backgroundColor: '#fff',
                     paddingTop: screenHeightPercent(4)+20,
                 }}
             >
-                <StatusBar translucent backgroundColor="transparent" barStyle="light-content"/>
+                <StatusBar translucent backgroundColor="transparent" barStyle="dark-content"/>
                 <View
                     style={{
                         width: '100%',
@@ -113,14 +113,14 @@ export default class TambahDetailKuesioner extends Component{
                             justifyContent: 'center'
                         }}
                     >
-                        <Ionicons name="arrow-back" size={20} color={'#000'}/>
+                        <Ionicons name="chevron-back" size={25} color={'#000'}/>
                     </TouchableOpacity>
                     <Text
                         style={{
                             paddingLeft: 10,
                             fontFamily: 'NeoSansBold',
                             fontSize: 16,
-                            color: '#fff'
+                            color: '#000'
                         }}
                     >
                         {this.props.route.params !== undefined && this.props.route.params.id_mst_kuesioner_detail !== undefined ? 'Perbarui' : 'Tambah'} Detail Kuesioner
@@ -186,7 +186,7 @@ export default class TambahDetailKuesioner extends Component{
                                 flex: 1,
                                 marginRight: 10,
                                 borderRadius: 30,
-                                backgroundColor: "#9a67ea",
+                                backgroundColor: "#3f50b5",
                                 flexDirection: 'row',
                                 alignItems: 'center',
                                 justifyContent: 'center'

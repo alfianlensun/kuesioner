@@ -68,7 +68,6 @@ export async function PUT(url, data){
 }
 
 export async function POST(url, data){
-    console.log(data)
     return new Promise( async (resolve, reject) => {
         try {
             setTimeout(() => {

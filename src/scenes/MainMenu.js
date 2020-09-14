@@ -32,7 +32,7 @@ export default class MainMenu extends Component{
             <View
                 style={{
                     flex: 1,
-                    backgroundColor: '#320b86'
+                    backgroundColor: '#fff'
                 }}
             >
                 <Drawer
@@ -41,20 +41,20 @@ export default class MainMenu extends Component{
                     negotiatePan={true}
                     panCloseMask={0.2}
                     openDrawerOffset={0.2}
-                    side={'right'}
+                    side={'left'}
                     ref={(ref) => this._drawer = ref}
                     content={(
                         <View
                             style={[{
                                 flex: 1,
-                                borderTopLeftRadius: 30,
-                                backgroundColor: '#320b86'
+                                backgroundColor: '#fff'
                             }, {
                                 shadowColor: "rgba(255,255,255,.4)",
                                 shadowOffset: {
                                     width: 1,
                                     height: 4,
                                 },
+                                zIndex: 2,
                                 shadowOpacity: 0.2,
                                 shadowRadius: 6.49,
                                 elevation: 20,
@@ -69,17 +69,17 @@ export default class MainMenu extends Component{
                             >
                                 <View
                                     style={{
-                                        borderWidth: 2,
-                                        borderColor: '#fff',
+                                        borderWidth: 4,
+                                        borderColor: '#00227b',
                                         width: 100,
                                         height: 100,
                                         justifyContent: "center",
                                         alignItems: 'center',
-                                        backgroundColor: "#9162e4",
+                                        backgroundColor: "#fff",
                                         borderRadius: 50
                                     }}
                                 >
-                                    <Feather name="user" size={40} color={'#fff'}/>
+                                    <Feather name="user" size={40} color={'#222'}/>
                                 </View>
                                 <View
                                     style={{
@@ -92,7 +92,7 @@ export default class MainMenu extends Component{
                                             marginTop: 10,
                                             fontFamily: 'NeoSansBold',
                                             fontSize: 18,
-                                            color: '#fff'
+                                            color: '#000'
                                         }}
                                     >
                                         {this.state.user !== null && this.state.user.nama_user }
@@ -101,20 +101,19 @@ export default class MainMenu extends Component{
                                         style={{
                                             marginTop: 5,
                                             fontFamily: 'NeoSans',
-                                            fontSize: 13,
-                                            color: '#fff'
+                                            fontSize: 10,
+                                            color: '#000'
                                         }}
                                     >
-                                        {this.state.user !== null && (this.state.user.id_mst_tipe_user == 2 ? this.state.user.nip : (this.state.user.id_mst_tipe_user == 3 && this.state.user.nim)) }
+                                        {this.state.user !== null && (this.state.user.id_mst_tipe_user == 2 ? 'NIP - '+this.state.user.nip : (this.state.user.id_mst_tipe_user == 3 && 'NIM - '+this.state.user.nim)) }
                                     </Text>
                                 </View>
                             </View>
                             <View
                                 style={{
                                     flex: 1,
-                                    paddingBottom: 20,
                                     justifyContent: 'flex-end',
-                                    alignItems: 'flex-end'
+                                    alignItems: 'center'
                                 }}
                             >
                                 <TouchableOpacity
@@ -130,14 +129,14 @@ export default class MainMenu extends Component{
                                         width: '80%',
                                         paddingVertical: 20,
                                         paddingHorizontal: 20,
-                                        borderTopLeftRadius: 10,
-                                        borderBottomLeftRadius: 10,
-                                        backgroundColor: '#b085f5'
+                                        borderRadius: 40,
+                                        marginBottom: 20,
+                                        backgroundColor: '#3f50b5'
                                     }}
                                 >
                                     <Text
                                         style={{
-                                            fontFamily: 'NeoSans',
+                                            fontFamily: 'NeoSansBold',
                                             fontSize: 14,
                                             color: '#fff'
                                         }}
@@ -149,7 +148,7 @@ export default class MainMenu extends Component{
                         </View>
                     )}
                     >
-                    <StatusBar translucent backgroundColor="transparent" barStyle="light-content"/>
+                    <StatusBar translucent backgroundColor="transparent" barStyle="dark-content"/>
                     <View
                         style={{
                             width: '100%',
@@ -166,27 +165,14 @@ export default class MainMenu extends Component{
                         >
                             <View
                                 style={{
-                                    width: 50,
-                                    height: 50,
-                                    justifyContent: "center",
-                                    alignItems: 'center',
-                                    backgroundColor: "#9162e4",
-                                    borderRadius: 25
-                                }}
-                            >
-                                <Feather name="user" size={20} color={'#fff'}/>
-                            </View>
-                            <View
-                                style={{
                                     flex: 1,
-                                    paddingLeft: 10,
                                 }}
                             >
                                 <Text
                                     style={{
                                         fontFamily: 'NeoSans',
                                         fontSize: 14,
-                                        color: '#fff'
+                                        color: '#000'
                                     }}
                                 >
                                     Hey, 
@@ -196,7 +182,7 @@ export default class MainMenu extends Component{
                                         marginTop: 5,
                                         fontFamily: 'NeoSansBold',
                                         fontSize: 14,
-                                        color: '#fff'
+                                        color: '#000'
                                     }}
                                 >
                                     {this.state.user !== null && this.state.user.nama_user}
@@ -205,135 +191,43 @@ export default class MainMenu extends Component{
                             <TouchableOpacity
                                 onPress={() => {this._drawer.open()}}
                                 style={{
-                                    height: 40,
-                                    width: 40,
-                                    justifyContent: 'center',
+                                    width: 50,
+                                    height: 50,
+                                    justifyContent: "center",
                                     alignItems: 'center',
-                                    borderRadius: 20,
+                                    backgroundColor: "#00227b",
+                                    borderRadius: 25
                                 }}
                             >
-                                <MI name="filter-list" size={30} color={'#fff'}/>
+                                <Feather name="user" size={20} color={'#fff'}/>
                             </TouchableOpacity>
+                            
                         </View>
                     </View>
                     <View
                         style={{
                             flex: 1,
-                            paddingTop: 40,
                             paddingHorizontal:20
                         }}
                     >
                         <Text
                             style={{
-                                fontFamily: 'NeoSansBold',
-                                fontSize: 14,
-                                color: '#fff'
-                            }}
-                        >
-                            Informasi Kuesioner
-                        </Text>
-                        <View
-                            style={{
-                                marginTop: 10,
-                                width: '100%',
-                                flexDirection: 'row'
-                            }}
-                        >
-                            <View
-                                style={{
-                                    flex: 1,
-                                    paddingRight: 10
-                                }}
-                            >
-                                <View
-                                    style={{
-                                        width: '100%',
-                                        height: 80,
-                                        borderRadius: 5,
-                                        justifyContent: 'center',
-                                        alignItems: 'center',
-                                        backgroundColor: '#fff'
-                                    }}
-                                >
-                                    <Text
-                                        style={{
-                                            fontFamily: 'NeoSansBold',
-                                            fontSize: 30,
-                                            color: '#000'
-                                        }}
-                                    >
-                                        5
-                                    </Text>
-                                    <Text
-                                        style={{
-                                            marginTop: 5,
-                                            fontFamily: 'NeoSans',
-                                            fontSize: 12,
-                                            color: '#000'
-                                        }}
-                                    >
-                                        Kuesioner Di Isi
-                                    </Text>
-                                </View>
-                            </View>   
-                            <View
-                                style={{
-                                    flex: 1,
-                                    paddingLeft: 10
-                                }}
-                            >
-                                <View
-                                    style={{
-                                        width: '100%',
-                                        height: 80,
-                                        borderRadius: 5,
-                                        justifyContent: 'center',
-                                        alignItems: 'center',
-                                        backgroundColor: '#fff'
-                                    }}
-                                >
-                                    <Text
-                                        style={{
-                                            fontFamily: 'NeoSansBold',
-                                            fontSize: 30,
-                                            color: '#000'
-                                        }}
-                                    >
-                                        5
-                                    </Text>
-                                    <Text
-                                        style={{
-                                            marginTop: 5,
-                                            fontFamily: 'NeoSans',
-                                            fontSize: 12,
-                                            color: '#000'
-                                        }}
-                                    >
-                                        Kuesioner Di Belum Isi
-                                    </Text>
-                                </View>
-                                
-                            </View>    
-                        </View>
-                        <Text
-                            style={{
                                 marginTop: 20,
                                 fontFamily: 'NeoSansBold',
                                 fontSize: 13,
-                                color: '#fff'
+                                color: '#000'
                             }}
                         >
                             Fitur Aplikasi Ini
                         </Text>
                         <View
-                            style={{
+                            style={[{
                                 marginTop: 10,
                                 width: '100%',
                                 paddingHorizontal: 10,
-                                paddingVertical: 10,
-                                backgroundColor: '#fff',
+                                backgroundColor: '#3f51b5',
                                 borderRadius: 5 
-                            }}
+                            }]}
                         >
                             <View
                                 style={{
@@ -344,27 +238,61 @@ export default class MainMenu extends Component{
                                     flexWrap: 'wrap'
                                 }}
                             >
-                                <CardMenu 
-                                    label={'Master Kuesioner'}
-                                    onPress={() => {
-                                        this.props.navigation.push('ListKuesioner')
-                                    }}
-                                    icon={<Foundation name="clipboard-pencil" color={'#fff'} size={25}/>}
-                                />
-                                <CardMenu 
-                                    label={'Isi Kuesioner'}
-                                    onPress={() => {
-                                        this.props.navigation.push('PilihKuesioner')
-                                    }}
-                                    icon={<AntDesign name="plus" color={'#fff'} size={25}/>}
-                                />
-                                <CardMenu 
-                                    label={'Management User'}
-                                    onPress={() => {
-                                        this.props.navigation.navigate('ListUser')
-                                    }}
-                                    icon={<AntDesign name="adduser" color={'#fff'} size={25}/>}
-                                />
+                                {this.state.user !== null && this.state.user.id_mst_tipe_user === 1 &&
+                                    <CardMenu 
+                                        label={'Dashboard'}
+                                        onPress={() => {
+                                            this.props.navigation.push('PilihDashboard')
+                                        }}
+                                        icon={<AntDesign name="piechart" color={'#fff'} size={25}/>}
+                                    />
+                                }
+                                {this.state.user !== null && this.state.user.id_mst_tipe_user === 1 &&
+                                    <CardMenu 
+                                        label={'Master Kuesioner'}
+                                        onPress={() => {
+                                            this.props.navigation.push('ListKuesioner')
+                                        }}
+                                        icon={<Foundation name="clipboard-pencil" color={'#fff'} size={25}/>}
+                                    />
+                                }
+                                {this.state.user !== null && this.state.user.id_mst_tipe_user === 1 &&
+                                    <CardMenu 
+                                        label={'Master Semester'}
+                                        onPress={() => {
+                                            this.props.navigation.push('ListSemester')
+                                        }}
+                                        icon={<Foundation name="clipboard-pencil" color={'#fff'} size={25}/>}
+                                    />
+                                }
+                                {this.state.user !== null && this.state.user.id_mst_tipe_user === 1 &&
+                                    <CardMenu 
+                                        label={'Master Mata Kuliah'}
+                                        onPress={() => {
+                                            this.props.navigation.push('ListMataKuliah')
+                                        }}
+                                        icon={<Foundation name="clipboard-pencil" color={'#fff'} size={25}/>}
+                                    />
+                                }
+                                
+                                {this.state.user !== null && this.state.user.id_mst_tipe_user === 1 &&
+                                    <CardMenu 
+                                        label={'Management User'}
+                                        onPress={() => {
+                                            this.props.navigation.navigate('ListUser')
+                                        }}
+                                        icon={<AntDesign name="adduser" color={'#fff'} size={25}/>}
+                                    />
+                                }
+                                {this.state.user !== null && this.state.user.id_mst_tipe_user !== 1 &&
+                                    <CardMenu 
+                                        label={'Isi Kuesioner'}
+                                        onPress={() => {
+                                            this.props.navigation.push('PilihKuesioner')
+                                        }}
+                                        icon={<AntDesign name="plus" color={'#fff'} size={25}/>}
+                                    />
+                                }
                             </View>
                         </View>
                     </View>

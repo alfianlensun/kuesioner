@@ -38,7 +38,7 @@ export default class IsiKuesioner extends Component{
 
     getListPertanyaan = async () => {
         try{
-            const {data} = await getKuesionerDetail(this.props.route.params.id_mst_kuesioner);
+            const {data} = await getKuesionerDetail(this.props.route.params.kuesioner.id_mst_kuesioner);
             let jawaban = {}
             for (const item of data){
                 jawaban[item.id_mst_kuesioner_detail] = {
@@ -94,11 +94,11 @@ export default class IsiKuesioner extends Component{
             <View
                 style={{
                     flex: 1,
-                    backgroundColor: '#320b86',
+                    backgroundColor: '#fff',
                     paddingTop: screenHeightPercent(4)+20,
                 }}
             >
-                <StatusBar translucent backgroundColor="transparent" barStyle="light-content"/>
+                <StatusBar translucent backgroundColor="transparent" barStyle="dark-content"/>
                 <View
                     style={{
                         width: '100%',
@@ -118,14 +118,14 @@ export default class IsiKuesioner extends Component{
                             justifyContent: 'center'
                         }}
                     >
-                        <Ionicons name="arrow-back" size={20} color={'#000'}/>
+                        <Ionicons name="chevron-back" size={25} color={'#000'}/>
                     </TouchableOpacity>
                     <Text
                         style={{
                             paddingLeft: 10,
                             fontFamily: 'NeoSansBold',
                             fontSize: 16,
-                            color: '#fff'
+                            color: '#000'
                         }}
                     >
                         Isi Kuesioner
@@ -135,7 +135,6 @@ export default class IsiKuesioner extends Component{
                     style={{
                         flex: 1  ,
                         paddingHorizontal: 20,
-                        paddingTop: 20,
                     }}
                 >
                     <FlatList
@@ -148,6 +147,7 @@ export default class IsiKuesioner extends Component{
                             <View
                                 style={{
                                     flex: 1,
+                                    paddingTop: 20,
                                     alignItems: 'center'
                                 }}
                             >
@@ -156,7 +156,7 @@ export default class IsiKuesioner extends Component{
                                         fontFamily: 'NeoSansBold',
                                         fontSize: 14,
                                         lineHeight: 20,
-                                        color: '#fff'
+                                        color: '#000'
                                     }}
                                 >Belum ada pertanyaan di kuesioner ini</Text>  
                             </View>
@@ -166,10 +166,10 @@ export default class IsiKuesioner extends Component{
                                 style={{
                                     marginTop: 20,
                                     width: '100%',
-                                    borderRadius: 20,
+                                    borderRadius: 10,
                                     paddingHorizontal: 20,
                                     paddingVertical: 10,
-                                    backgroundColor: '#fff'
+                                    backgroundColor: '#3f50b5'
                                 }}
                             >
                                 <Text
@@ -179,7 +179,7 @@ export default class IsiKuesioner extends Component{
                                         textAlign: 'center',
                                         fontSize: 14,
                                         lineHeight: 20,
-                                        color: '#000'
+                                        color: '#fff'
                                     }}
                                 >
                                     {item.pertanyaan}
@@ -187,11 +187,11 @@ export default class IsiKuesioner extends Component{
                                 <AirbnbRating
                                     count={5}
                                     reviewSize={16}
-                                    reviews={["Kurang", 'Cukup', 'Cukup Baik', 'Baik', 'Sangat Baik']}
+                                    reviews={["Sangat Kurang", 'Kurang', 'Sedang', 'Baik', 'Sangat Baik']}
                                     defaultRating={this.state.listJawaban[item.id_mst_kuesioner_detail].value}
                                     starStyle={{
                                         marginHorizontal: 10,
-                                        backgroundColor: '#320b8610',
+                                        backgroundColor: '#eee',
                                         borderRadius: 50,
                                     }}
                                     onFinishRating={(value) => {
@@ -202,8 +202,8 @@ export default class IsiKuesioner extends Component{
                                         width: '100%',
                                     }}
                                     size={20}
-                                    selectedColor={'#280680'}
-                                    reviewColor={'#000'}
+                                    selectedColor={'#66bb6a'}
+                                    reviewColor={'#fff'}
                                 />
                             </View>
                         )}
@@ -220,7 +220,7 @@ export default class IsiKuesioner extends Component{
                         alignItems: 'center',
                         justifyContent: 'center',
                         borderRadius: 30,
-                        backgroundColor: '#b085f5'
+                        backgroundColor: '#3f50b5'
                     }}
                 >
                     {this.state.loaderSave ? 

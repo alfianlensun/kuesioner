@@ -25,11 +25,11 @@ export default class ListUser extends Component{
             <View
                 style={{
                     flex: 1,
-                    backgroundColor: '#320b86',
+                    backgroundColor: '#fff',
                     paddingTop: screenHeightPercent(4)+20,
                 }}
             >
-                <StatusBar translucent backgroundColor="transparent" barStyle="light-content"/>
+                <StatusBar translucent backgroundColor="transparent" barStyle="dark-content"/>
                 <View
                     style={{
                         width: '100%',
@@ -49,14 +49,14 @@ export default class ListUser extends Component{
                             justifyContent: 'center'
                         }}
                     >
-                        <Ionicons name="arrow-back" size={20} color={'#000'}/>
+                        <Ionicons name="chevron-back" size={25} color={'#000'}/>
                     </TouchableOpacity>
                     <Text
                         style={{
                             paddingLeft: 10,
                             fontFamily: 'NeoSansBold',
                             fontSize: 16,
-                            color: '#fff'
+                            color: '#000'
                         }}
                     >
                         Daftar User
@@ -66,6 +66,7 @@ export default class ListUser extends Component{
                     style={{
                         flex: 1,
                         paddingTop: 10,
+                        paddingHorizontal: 10,
                     }}
                 >
                     <Tab.Navigator
@@ -77,6 +78,7 @@ export default class ListUser extends Component{
                         initialRouteName="TabListMahasiswa"
                         tabBarOptions={{
                             activeTintColor: '#fff',
+                            inactiveTintColor: '#000',
                             labelStyle: { 
                                 fontSize: 12,
                                 fontFamily: 'NeoSansBold',
@@ -96,7 +98,7 @@ export default class ListUser extends Component{
                                 borderRadius: 30,
                                 alignSelf: 'center',
                                 position: "absolute",
-                                backgroundColor: 'rgba(0,0,0,.6)',
+                                backgroundColor: '#3f50b5',
                             },
                         }}
                         style={{
@@ -107,7 +109,7 @@ export default class ListUser extends Component{
                             name="TabListMahasiswa"
                             component={TabListMahasiswa}
                             options={{ 
-                                tabBarLabel: 'Mahasiswa'
+                                tabBarLabel: 'Mahasiswa',
                             }}
                         />
                         <Tab.Screen

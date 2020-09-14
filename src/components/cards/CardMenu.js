@@ -15,7 +15,7 @@ export default function CardMenu({onPress,...props}){
         >
             <View
                 style={{
-                    backgroundColor: '#280680',
+                    backgroundColor: '#00227b',
                     width: 50,
                     height: 50,
                     alignItems: 'center',
@@ -30,7 +30,7 @@ export default function CardMenu({onPress,...props}){
                     fontFamily: 'NeoSans',
                     fontSize: 12,
                     marginTop: 10,
-                    color: '#000'
+                    color: '#fff'
                 }}
             >
                 {props.label}
