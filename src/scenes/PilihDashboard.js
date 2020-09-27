@@ -4,6 +4,7 @@ import TextInputLogin from '../components/textinput/TextInputLogin'
 import { screenHeightPercent } from '../helpers/HelpersLayout'
 import Feather from 'react-native-vector-icons/Feather'
 import Foundation from 'react-native-vector-icons/Foundation'
+import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons'
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import CardMenu from '../components/cards/CardMenu'
 import Ionicons from 'react-native-vector-icons/Ionicons'
@@ -435,7 +436,7 @@ export default class PilihDashboard extends Component{
                 <View
                     style={{
                         width: '100%',
-                        paddingHorizontal: 20,
+                        paddingHorizontal: 10,
                         flexDirection: 'row',
                         alignItems: 'center'
                     }}
@@ -463,6 +464,27 @@ export default class PilihDashboard extends Component{
                     >
                         Form Dashboard
                     </Text>
+                    <View
+                        style={{
+                            flex: 1,
+                            paddingRight: 10,
+                            alignItems: 'flex-end'
+                        }}
+                    >
+                        <TouchableOpacity
+                            onPress={() => this.props.navigation.push('DashboardKriteria')}
+                            style={{
+                                width: 40,
+                                height: 40,
+                                borderRadius: 20,
+                                backgroundColor: '#320b86',
+                                alignItems: 'center',
+                                justifyContent: 'center'
+                            }}
+                        >
+                            <SimpleLineIcons name="graph" size={25} color={'#fff'}/>
+                        </TouchableOpacity>
+                    </View>
                 </View>
                 <FlatList
                     style={{

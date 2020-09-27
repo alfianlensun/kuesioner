@@ -1,5 +1,6 @@
 import { PUT, GET, DELETE, POST } from "./GeneralServices";
 // const base_url = 'http://192.168.43.168:4000'
+// const base_url = 'http://172.31.64.112:4000'
 const base_url = 'https://absensionline.web.id:4000'
 
 export async function loginService(data){
@@ -61,7 +62,7 @@ export async function getKuesionerMahasiswa(idMhs){
 }
 
 export async function createKuesioner(data){
-    console.log(base_url+'/master/kuesioner')
+    // console.log(base_url+'/master/kuesioner')
     return await PUT(base_url+'/master/kuesioner', data)   
 }
 
@@ -114,4 +115,8 @@ export async function getKuesionerChart(iddosen, idkuesioner, idpertanyaan){
     } else {
         return await GET(`${base_url}/kuesioner/chart-kuesioner/${iddosen}/${idkuesioner}`)
     }
+}
+
+export async function getKuesionerKriteria(id_mst_kuesioner_detail){
+    return await GET(`${base_url}/kuesioner/chart-kategori/${id_mst_kuesioner_detail}`)
 }

@@ -55,7 +55,7 @@ export default class Login extends Component{
             
         } catch(err){
             this.setState({
-                error: err.message,
+                error: err.message !== undefined ? err.message : 'Cant connect to server',
                 loader: false
             })
         }

@@ -21,6 +21,7 @@ import ListSemester from './src/scenes/ListSemester';
 import ListMataKuliah from './src/scenes/ListMataKuliah';
 import TambahSemester from './src/scenes/TambahSemester';
 import TambahMataKuliah from './src/scenes/TambahMataKuliah';
+import DashboardKriteria from './src/scenes/DashboardKriteria';
 
 const config = {
 	animation: 'spring',
@@ -75,6 +76,7 @@ export default class App extends Component{
 					<Stack.Screen name="PilihKuesioner" component={PilihKuesioner}/>
 					<Stack.Screen name="IsiKuesioner" component={IsiKuesioner}/>
 					<Stack.Screen name="Dashboard" component={Dashboard}/>
+					<Stack.Screen name="DashboardKriteria" component={DashboardKriteria}/>
 					<Stack.Screen name="HasilKuesioner" component={HasilKuesioner}/>
 					<Stack.Screen name="PilihDashboard" component={PilihDashboard}/>
 					<Stack.Screen name="ListSemester" component={ListSemester}/>
